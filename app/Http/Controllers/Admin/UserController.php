@@ -26,7 +26,7 @@ class UserController extends Controller
                 'required',
                 'regex:/^\d{6}$/'
             ],
-            'head' => 'required'
+            'head' => 'file'
         ],
             [//错误信息展示
                 'name.required'=>'用户名不能为空',
@@ -35,7 +35,7 @@ class UserController extends Controller
                 'email'=>'邮箱格式不正确',
                 'password.required'=>'密码不能为空',
                 'password.regex'=>'密码长度不能小于6位数',
-                'head.required'=>'头像不能为空'
+                'head.file'=>'头像不能为空'
             ]);
             $user->update($request->input());
         session()->flash('success','修改用户信息成功');
@@ -60,7 +60,7 @@ class UserController extends Controller
                 'required',
                 'regex:/^\d{6}$/'
         ],
-            'head' => 'required',
+            'head' => 'file',
             'captcha' => 'required|captcha'
         ],
             [//错误信息展示
@@ -70,16 +70,16 @@ class UserController extends Controller
                 'email'=>'邮箱格式不正确',
                 'password.required'=>'密码不能为空',
                 'password.regex'=>'密码长度不能小于6位数',
-                'head.required'=>'头像不能为空',
+                'head.file'=>'头像不能为空',
                  'captcha.required'=> '验证码不能为空',
                 'captcha.captcha'=> '请输入正确的验证码'
 
             ]);
 
-
+        $path=$request->file('head')->store('public/image');
         $user=new user();
         $user->name = $request->name;
-
+        $user->head = $path;
         $user->email =$request->email;
         $user->password =$request->password;
         $user->save();

@@ -15,7 +15,7 @@
         <tr>
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
-            <td>{{$user->head}}</td>
+            <td>@if($user->head) <img class="img-circle" src="{{\Illuminate\Support\Facades\Storage::url($user->head)}}" /> @endif </td>
             <td>{{$user->email}}</td>
             <td>{{$user->created_at}}</td>
             <td>{{$user->updated_at}}</td>

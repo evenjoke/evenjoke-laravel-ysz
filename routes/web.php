@@ -19,7 +19,7 @@ Route::get('/Admin/user/add','Admin\UserController@add')->name('Admin.user.add')
 Route::get('/Admin/user/index','Admin\UserController@index')->name('Admin.user.index');
 Route::post('/Admin/user/save','Admin\UserController@save')->name('Admin.user.save');
 Route::get('/Admin/user/edit/{user}','Admin\UserController@edit')->name('Admin.user.edit');
-Route::post('/Admin/user/update{user}','Admin\UserController@update')->name('Admin.user.update');
+Route::post('/Admin/user/update/{user}','Admin\UserController@update')->name('Admin.user.update');
 Route::get('/Admin/user/delete/{user}','Admin\UserController@delete')->name('Admin.user.delete');
 //新的路由方法
-Route::resource('articles','Admin\ArticleController');
+Route::resource('Admin/articles','Admin\ArticleController');
