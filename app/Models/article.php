@@ -10,6 +10,6 @@ class article extends Model
     public function author()
     {
 //        return $this->belongsTo('App\Models\Admin');
-        return $this->belongsTo(user::class,'author_id','id');
+        return $this->belongsTo(user::class, 'author_id', 'id');
     }
 }
